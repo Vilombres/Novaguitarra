@@ -3,145 +3,168 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Novaguitarra | High-End Guitar Studio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <title>NOVAGUITARRA | Ultra-Modern Guitar Studio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #ffffff;
-            --text: #0a0a0a;
-            --accent: #1a3a3a;
-            --subtle: #888888;
-            --border: #ececec;
-            --transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+            --bg: #0d0d0d; /* Fondo casi negro para elegancia máxima */
+            --text: #ffffff;
+            --accent: #1aedc1; /* Verde neón técnico muy sutil */
+            --subtle: #444;
+            --font-main: 'Inter', sans-serif;
         }
 
-        * { box-sizing: border-box; cursor: none; }
-        html { scroll-behavior: smooth; }
-        body { font-family: 'Inter', sans-serif; background-color: var(--bg); color: var(--text); margin: 0; overflow-x: hidden; }
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: var(--font-main);
+            margin: 0;
+            line-height: 1.4;
+            -webkit-font-smoothing: antialiased;
+        }
 
-        /* Cursor */
-        #cursor { width: 10px; height: 10px; background: var(--accent); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; transition: transform 0.2s; }
+        /* 1. LAYOUT DE ALTA GAMA */
+        .viewport { padding: 0 6vw; }
 
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 4vw; }
+        section {
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-bottom: 1px solid var(--subtle);
+            padding: 10rem 0;
+        }
 
-        /* Nav */
-        nav { position: fixed; top: 0; left: 0; width: 100%; padding: 1.5rem 5vw; display: flex; justify-content: space-between; align-items: center; z-index: 1000; transition: var(--transition); }
-        nav.scrolled { background: rgba(255,255,255,0.9); backdrop-filter: blur(10px); padding: 1rem 5vw; border-bottom: 1px solid var(--border); }
-        .logo { font-weight: 800; letter-spacing: -0.05em; font-size: 1.2rem; }
-        .nav-links { display: flex; gap: 2rem; }
-        .nav-links a { text-decoration: none; color: var(--text); font-size: 0.8rem; font-weight: 600; text-transform: uppercase; }
+        /* 2. TIPOGRAFÍA IMPACTANTE */
+        h1 {
+            font-size: clamp(4rem, 15vw, 12rem);
+            font-weight: 900;
+            letter-spacing: -0.07em;
+            line-height: 0.8;
+            margin: 0;
+            text-transform: uppercase;
+        }
 
-        /* Header */
-        header { padding: 15rem 0 10rem 0; }
-        .reveal { opacity: 0; transform: translateY(30px); transition: var(--transition); }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-        h1 { font-size: clamp(4rem, 12vw, 8rem); line-height: 0.85; margin: 0; letter-spacing: -0.06em; color: var(--accent); }
+        .hero-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            color: var(--subtle);
+        }
 
-        /* Galería de Vídeos */
-        .video-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(45%, 1fr)); gap: 2rem; margin-top: 4rem; }
-        .video-card { position: relative; width: 100%; padding-top: 56.25%; background: #000; overflow: hidden; }
-        .video-card iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; filter: grayscale(100%) contrast(1.1); transition: var(--transition); }
-        .video-card iframe:hover { filter: grayscale(0%); }
+        /* 3. GRID TÉCNICO */
+        .method-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 20px;
+        }
 
-        /* Formulario */
-        .contact-layout { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 5rem; margin-top: 4rem; }
-        .input-group { position: relative; margin-bottom: 3rem; }
-        input, textarea { width: 100%; background: none; border: none; border-bottom: 1px solid var(--border); padding: 1rem 0; font-size: 1.2rem; outline: none; transition: var(--transition); }
-        .bar { position: absolute; bottom: 0; left: 0; height: 2px; width: 0; background: var(--accent); transition: var(--transition); }
-        input:focus ~ .bar, textarea:focus ~ .bar { width: 100%; }
-        button { background: var(--accent); color: white; border: none; padding: 1.5rem 4rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.2em; cursor: pointer; transition: var(--transition); }
-        button:hover { background: #000; letter-spacing: 0.3em; }
+        .method-card {
+            grid-column: span 4;
+            border-left: 1px solid var(--accent);
+            padding-left: 2rem;
+        }
 
-        footer { padding: 5rem; text-align: center; font-size: 0.7rem; letter-spacing: 0.3em; color: var(--subtle); border-top: 1px solid var(--border); }
+        .method-card h3 { font-size: 1.5rem; margin-bottom: 1rem; }
+        .method-card p { color: #888; font-size: 0.95rem; }
 
-        @media (max-width: 768px) { h1 { font-size: 4rem; } * { cursor: auto; } #cursor { display: none; } .video-grid { grid-template-columns: 1fr; } }
+        /* 4. FUNCIONALIDAD DE VÍDEO PREMIUM */
+        .video-container {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #111;
+            margin-top: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .video-container iframe {
+            width: 100%; height: 100%; border: none;
+            opacity: 0.6; transition: opacity 0.5s;
+        }
+
+        .video-container:hover iframe { opacity: 1; }
+
+        /* 5. BOTÓN DE ACCIÓN (CTA) */
+        .btn-nova {
+            display: inline-block;
+            padding: 2rem 4rem;
+            border: 1px solid var(--text);
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 700;
+            margin-top: 3rem;
+            transition: all 0.3s;
+        }
+
+        .btn-nova:hover {
+            background: var(--text);
+            color: var(--bg);
+            transform: scale(1.05);
+        }
+
+        /* Animación de entrada */
+        .reveal { opacity: 0; transform: translateY(50px); transition: all 1s ease-out; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 768px) {
+            .method-card { grid-column: span 12; }
+            h1 { font-size: 5rem; }
+        }
     </style>
 </head>
 <body>
 
-<div id="cursor"></div>
+    <div class="viewport">
+        <header style="height: 100vh; display: flex; flex-direction: column; justify-content: center;">
+            <div class="reveal">
+                <h1>NOVA<br>GUITARRA</h1>
+                <div class="hero-meta">
+                    <span>STRATEGIC INSTRUCTION</span>
+                    <span>EST. 2026</span>
+                </div>
+            </div>
+        </header>
 
-<nav id="navbar">
-    <div class="logo">NOVAGUITARRA</div>
-    <div class="nav-links">
-        <a href="#video">Sesiones</a>
-        <a href="#contacto">Inscribirse</a>
+        <section id="metodo">
+            <h2 class="reveal" style="font-size: 0.8rem; letter-spacing: 0.5em; color: var(--accent); margin-bottom: 4rem;">SYSTEM_01</h2>
+            <div class="method-grid">
+                <div class="method-card reveal">
+                    <h3>ANATOMÍA</h3>
+                    <p>Dominio del diapasón mediante geometría fractal y visualización avanzada.</p>
+                </div>
+                <div class="method-card reveal" style="transition-delay: 0.2s;">
+                    <h3>DINÁMICA</h3>
+                    <p>El control del ataque y la presión como base de la identidad sonora.</p>
+                </div>
+                <div class="method-card reveal" style="transition-delay: 0.4s;">
+                    <h3>FLUIDEZ</h3>
+                    <p>Optimización bionecánica para eliminar la tensión innecesaria.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contacto" style="text-align: center; border: none;">
+            <div class="reveal">
+                <h2 style="font-size: clamp(2rem, 8vw, 5rem);">¿Listo para el siguiente nivel?</h2>
+                <a href="mailto:hola@novaguitarra.com" class="btn-nova">APLICAR AHORA</a>
+            </div>
+        </section>
     </div>
-</nav>
 
-<div class="container">
-    <header class="reveal">
-        <div style="font-size: 0.9rem; margin-bottom: 2rem; letter-spacing: 0.1em;">— EL ARTE DE LA TÉCNICA</div>
-        <h1>NOVAGUITARRA<br>ACADEMY.</h1>
-    </header>
+    <script>
+        // Efecto de aparición al hacer scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.2 });
 
-    <section id="video" class="reveal">
-        <h2 style="font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase; margin-bottom: 3rem; color: var(--subtle);">01 / Performance & Masterclass</h2>
-        <div class="video-grid">
-            <div class="video-card">
-                <iframe src="https://www.youtube.com/embed/VIDEO_ID_1" title="YouTube video player" allowfullscreen></iframe>
-            </div>
-            <div class="video-card">
-                <iframe src="https://www.youtube.com/embed/VIDEO_ID_2" title="YouTube video player" allowfullscreen></iframe>
-            </div>
-        </div>
-    </section>
-
-    <section id="contacto" class="reveal">
-        <h2 style="font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase; margin-bottom: 3rem; color: var(--subtle);">02 / Aplicar para plaza</h2>
-        <div class="contact-layout">
-            <div>
-                <p style="font-size: 2rem; line-height: 1.2; font-weight: 600;">¿Hablamos sobre<br>tus objetivos?</p>
-                <p style="color: var(--subtle);">Las sesiones son limitadas para garantizar la máxima atención personalizada.</p>
-            </div>
-            <form action="https://formspree.io/f/tu_id_aqui" method="POST">
-                <div class="input-group">
-                    <input type="text" name="name" placeholder="NOMBRE COMPLETO" required>
-                    <div class="bar"></div>
-                </div>
-                <div class="input-group">
-                    <input type="email" name="email" placeholder="EMAIL" required>
-                    <div class="bar"></div>
-                </div>
-                <div class="input-group">
-                    <textarea name="message" placeholder="¿QUÉ QUIERES LOGRAR?" rows="1" id="msg"></textarea>
-                    <div class="bar"></div>
-                </div>
-                <button type="submit">Enviar Solicitud</button>
-            </form>
-        </div>
-    </section>
-</div>
-
-<footer>
-    NOVAGUITARRA &copy; 2026 / HIGH PERFORMANCE GUITAR
-</footer>
-
-<script>
-    // Lógica de Cursor y Scroll
-    const cursor = document.getElementById('cursor');
-    document.addEventListener('mousemove', e => {
-        cursor.style.left = e.clientX + 'px';
-        cursor.style.top = e.clientY + 'px';
-    });
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-    window.addEventListener('scroll', () => {
-        const nav = document.getElementById('navbar');
-        if (window.scrollY > 50) nav.classList.add('scrolled');
-        else nav.classList.remove('scrolled');
-    });
-
-    const tx = document.getElementById('msg');
-    tx.addEventListener("input", function() {
-        this.style.height = "auto";
-        this.style.height = (this.scrollHeight) + "px";
-    });
-</script>
-
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
 </body>
 </html>
