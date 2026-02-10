@@ -8,12 +8,19 @@
     body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f9f9f9; color: #333; line-height: 1.6; }
     header { background: #222; color: #fff; padding: 20px 0; text-align: center; }
     nav a { color: #fff; margin: 0 15px; text-decoration: none; font-weight: bold; }
-    section { padding: 40px 20px; max-width: 900px; margin: auto; }
-    h2 { color: #222; }
+    nav a:hover { text-decoration: underline; }
+    section { padding: 40px 20px; max-width: 1000px; margin: auto; }
+    h2 { color: #222; margin-top: 0; }
     .button { display: inline-block; padding: 10px 20px; margin: 10px 5px; background: #222; color: #fff; text-decoration: none; border-radius: 5px; }
     footer { text-align: center; padding: 20px; background: #222; color: #fff; margin-top: 40px; }
-    iframe { max-width: 100%; }
-    img { max-width: 100%; border-radius: 10px; }
+    iframe { max-width: 100%; border-radius: 10px; }
+    img { max-width: 100%; border-radius: 10px; margin: 20px 0; }
+    .testimonials { display: flex; flex-wrap: wrap; gap: 20px; }
+    .testimonial { background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0px 2px 8px rgba(0,0,0,0.1); flex: 1 1 300px; }
+    .testimonial p { font-style: italic; }
+    .testimonial h4 { margin: 10px 0 0 0; font-weight: bold; }
+    ul { padding-left: 20px; }
+    li { margin-bottom: 8px; }
   </style>
 </head>
 <body>
@@ -25,6 +32,7 @@
     <a href="#clases">Clases</a>
     <a href="#sobre-mi">Sobre mí</a>
     <a href="#musica">Música</a>
+    <a href="#testimonios">Testimonios</a>
     <a href="#contacto">Contacto</a>
   </nav>
 </header>
@@ -32,7 +40,7 @@
 <section id="inicio">
   <h2>Bienvenido</h2>
   <p>Hola, soy Paco, guitarrista profesional y profesor de música. Aquí podrás conocer mis clases, mi trayectoria musical y ver algunas de mis interpretaciones.</p>
-  <img src="https://via.placeholder.com/800x300?text=NovaGuitarra" alt="Imagen de NovaGuitarra">
+  <img src="https://via.placeholder.com/1000x350?text=NovaGuitarra" alt="NovaGuitarra">
 </section>
 
 <section id="clases">
@@ -43,20 +51,39 @@
     <li>Duración: 45 min / 1 h</li>
     <li>Metodología personalizada para cada alumno</li>
     <li>Aprende teoría, técnica y canciones desde el primer día</li>
+    <li>Estilos: Clásico, Rock, Jazz, Flamenco, Pop</li>
   </ul>
 </section>
 
 <section id="sobre-mi">
   <h2>Sobre mí</h2>
-  <p>Soy músico con experiencia en conciertos y composición. Llevo años enseñando guitarra a alumnos de todas las edades y estilos: clásico, rock, jazz y más.</p>
-  <p>Mi objetivo es ayudarte a mejorar de manera práctica y divertida, adaptando las clases a tus necesidades.</p>
+  <p>Soy músico con experiencia en conciertos, composición y enseñanza de guitarra. Llevo años enseñando a alumnos de todas las edades y estilos. Mi objetivo es ayudarte a mejorar de manera práctica y divertida, adaptando las clases a tus necesidades.</p>
+  <img src="https://via.placeholder.com/800x300?text=Paco+Guitarrista" alt="Paco tocando guitarra">
 </section>
 
 <section id="musica">
   <h2>Música y Vídeos</h2>
-  <p>Algunas de mis interpretaciones:</p>
+  <p>Aquí puedes ver algunas de mis interpretaciones:</p>
   <iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID" title="YouTube video" frameborder="0" allowfullscreen></iframe>
-  <p>Pronto añadiré más vídeos y grabaciones para que puedas escucharlos aquí.</p>
+  <p>Pronto añadiré más vídeos y grabaciones para que puedas escucharlos directamente aquí.</p>
+</section>
+
+<section id="testimonios">
+  <h2>Testimonios de Alumnos</h2>
+  <div class="testimonials">
+    <div class="testimonial">
+      <p>"Las clases de Paco han sido increíbles. He aprendido mucho y siempre son divertidas y motivadoras."</p>
+      <h4>- Juan P.</h4>
+    </div>
+    <div class="testimonial">
+      <p>"Gracias a NovaGuitarra, he mejorado mi técnica y ahora puedo tocar mis canciones favoritas sin dificultad."</p>
+      <h4>- Laura M.</h4>
+    </div>
+    <div class="testimonial">
+      <p>"Paco es un gran profesor, paciente y muy profesional. Recomiendo sus clases a cualquiera que quiera aprender guitarra."</p>
+      <h4>- Carlos R.</h4>
+    </div>
+  </div>
 </section>
 
 <section id="contacto">
@@ -70,6 +97,11 @@
 
 <footer>
   <p>&copy; 2026 NovaGuitarra - Paco</p>
+</footer>
+
+</body>
+</html>
+
 </footer>
 
 </body>
