@@ -1,0 +1,7 @@
+{
+  "name": "Novaguitarra Academy",
+  "description": "Plataforma de formación musical de alto nivel para guitarristas, con gestión de testimonios y perfil profesional.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
