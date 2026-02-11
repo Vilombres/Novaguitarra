@@ -1,170 +1,68 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NOVAGUITARRA | Ultra-Modern Guitar Studio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <title>Novaguitarra - Formación Musical de Alto Nivel</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: '#D4AF37',
+                        navy: '#0B1120',
+                        slate: {
+                            950: '#020617'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        :root {
-            --bg: #0d0d0d; /* Fondo casi negro para elegancia máxima */
-            --text: #ffffff;
-            --accent: #1aedc1; /* Verde neón técnico muy sutil */
-            --subtle: #444;
-            --font-main: 'Inter', sans-serif;
+        .glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
-
-        body {
-            background: var(--bg);
-            color: var(--text);
-            font-family: var(--font-main);
-            margin: 0;
-            line-height: 1.4;
-            -webkit-font-smoothing: antialiased;
+        .hero-gradient {
+            background: linear-gradient(to bottom, rgba(11, 17, 32, 0.2) 0%, rgba(11, 17, 32, 0.8) 100%);
         }
-
-        /* 1. LAYOUT DE ALTA GAMA */
-        .viewport { padding: 0 6vw; }
-
-        section {
-            min-height: 80vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            border-bottom: 1px solid var(--subtle);
-            padding: 10rem 0;
+        ::-webkit-scrollbar {
+            width: 8px;
         }
-
-        /* 2. TIPOGRAFÍA IMPACTANTE */
-        h1 {
-            font-size: clamp(4rem, 15vw, 12rem);
-            font-weight: 900;
-            letter-spacing: -0.07em;
-            line-height: 0.8;
-            margin: 0;
-            text-transform: uppercase;
+        ::-webkit-scrollbar-track {
+            background: #0B1120;
         }
-
-        .hero-meta {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 2rem;
-            font-size: 0.75rem;
-            letter-spacing: 0.2em;
-            color: var(--subtle);
-        }
-
-        /* 3. GRID TÉCNICO */
-        .method-grid {
-            display: grid;
-            grid-template-columns: repeat(12, 1fr);
-            gap: 20px;
-        }
-
-        .method-card {
-            grid-column: span 4;
-            border-left: 1px solid var(--accent);
-            padding-left: 2rem;
-        }
-
-        .method-card h3 { font-size: 1.5rem; margin-bottom: 1rem; }
-        .method-card p { color: #888; font-size: 0.95rem; }
-
-        /* 4. FUNCIONALIDAD DE VÍDEO PREMIUM */
-        .video-container {
-            width: 100%;
-            aspect-ratio: 16/9;
-            background: #111;
-            margin-top: 4rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .video-container iframe {
-            width: 100%; height: 100%; border: none;
-            opacity: 0.6; transition: opacity 0.5s;
-        }
-
-        .video-container:hover iframe { opacity: 1; }
-
-        /* 5. BOTÓN DE ACCIÓN (CTA) */
-        .btn-nova {
-            display: inline-block;
-            padding: 2rem 4rem;
-            border: 1px solid var(--text);
-            color: var(--text);
-            text-decoration: none;
-            font-weight: 700;
-            margin-top: 3rem;
-            transition: all 0.3s;
-        }
-
-        .btn-nova:hover {
-            background: var(--text);
-            color: var(--bg);
-            transform: scale(1.05);
-        }
-
-        /* Animación de entrada */
-        .reveal { opacity: 0; transform: translateY(50px); transition: all 1s ease-out; }
-        .reveal.visible { opacity: 1; transform: translateY(0); }
-
-        @media (max-width: 768px) {
-            .method-card { grid-column: span 12; }
-            h1 { font-size: 5rem; }
+        ::-webkit-scrollbar-thumb {
+            background: #D4AF37;
+            border-radius: 10px;
         }
     </style>
+<script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react": "https://esm.sh/react@^19.2.4",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.40.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
 </head>
-<body>
-
-    <div class="viewport">
-        <header style="height: 100vh; display: flex; flex-direction: column; justify-content: center;">
-            <div class="reveal">
-                <h1>NOVA<br>GUITARRA</h1>
-                <div class="hero-meta">
-                    <span>STRATEGIC INSTRUCTION</span>
-                    <span>EST. 2026</span>
-                </div>
-            </div>
-        </header>
-
-        <section id="metodo">
-            <h2 class="reveal" style="font-size: 0.8rem; letter-spacing: 0.5em; color: var(--accent); margin-bottom: 4rem;">SYSTEM_01</h2>
-            <div class="method-grid">
-                <div class="method-card reveal">
-                    <h3>ANATOMÍA</h3>
-                    <p>Dominio del diapasón mediante geometría fractal y visualización avanzada.</p>
-                </div>
-                <div class="method-card reveal" style="transition-delay: 0.2s;">
-                    <h3>DINÁMICA</h3>
-                    <p>El control del ataque y la presión como base de la identidad sonora.</p>
-                </div>
-                <div class="method-card reveal" style="transition-delay: 0.4s;">
-                    <h3>FLUIDEZ</h3>
-                    <p>Optimización bionecánica para eliminar la tensión innecesaria.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="contacto" style="text-align: center; border: none;">
-            <div class="reveal">
-                <h2 style="font-size: clamp(2rem, 8vw, 5rem);">¿Listo para el siguiente nivel?</h2>
-                <a href="mailto:hola@novaguitarra.com" class="btn-nova">APLICAR AHORA</a>
-            </div>
-        </section>
-    </div>
-
-    <script>
-        // Efecto de aparición al hacer scroll
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.2 });
-
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-    </script>
+<body class="bg-navy text-slate-200 font-sans">
+    <div id="root"></div>
+<script type="module" src="/index.tsx"></script>
 </body>
 </html>
